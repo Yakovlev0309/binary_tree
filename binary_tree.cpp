@@ -65,15 +65,12 @@ void BinaryTree::add_node(int value, Node *parent)
     }
 }
 
-void BinaryTree::find_node(int value)
+void BinaryTree::tracerout_node(int value)
 {
-    if (root != nullptr)
-    {
-        find_node(value, root);
-    }
+    tracerout_node(value, root);
 }
 
-void BinaryTree::find_node(int value, Node *parent)
+void BinaryTree::tracerout_node(int value, Node *parent)
 {
     if (parent == nullptr)
     {
@@ -83,14 +80,39 @@ void BinaryTree::find_node(int value, Node *parent)
     print(parent->value);
     if (value > parent->value)
     {
-        find_node(value, parent->right);
+        tracerout_node(value, parent->right);
     }
     else if (value < parent->value)
     {
-        find_node(value, parent->left);
+        tracerout_node(value, parent->left);
     }
     else
     {
         return;
+    }
+}
+
+bool BinaryTree::contains(int value)
+{
+    return contains(value, root);
+}
+
+bool BinaryTree::contains(int value, Node *parent)
+{
+    if (parent == nullptr)
+    {
+        return false;
+    }
+    if (value > parent->value)
+    {
+        return contains(value, parent->right);
+    }
+    else if (value < parent->value)
+    {
+        return contains(value, parent->left);
+    }
+    else
+    {
+        return true;
     }
 }

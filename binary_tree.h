@@ -26,12 +26,15 @@ public:
     void print_nodes();
 
     void add_node(int value);
-    void add_node(int value, Node *parent);
-
     void remove_node(int value);
-    
-    void find_node(int value);
-    void find_node(int value, Node *parent);
+
+    void tracerout_node(int value);
+    bool contains(int value);
+
+private:
+    void add_node(int value, Node *parent);
+    void tracerout_node(int value, Node *parent);
+    bool contains(int value, Node *parent);
 
 private:
     Node *root;

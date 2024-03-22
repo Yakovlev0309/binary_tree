@@ -16,7 +16,9 @@ int main()
 
 //    bt.print_nodes();
 
-    tree.find_node(9);
+    tree.tracerout_node(6);
+
+    std::cout << (tree.contains(22) ? "true" : "false") << std::endl;
 
     return 0;
 }
