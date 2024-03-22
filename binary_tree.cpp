@@ -65,6 +65,32 @@ void BinaryTree::add_node(int value, Node *parent)
     }
 }
 
-Node BinaryTree::find_node(int value)
+void BinaryTree::find_node(int value)
 {
+    if (root != nullptr)
+    {
+        find_node(value, root);
+    }
+}
+
+void BinaryTree::find_node(int value, Node *parent)
+{
+    if (parent == nullptr)
+    {
+        std::cout << "There is no such value in binary tree." << std::endl;
+        return;
+    }
+    print(parent->value);
+    if (value > parent->value)
+    {
+        find_node(value, parent->right);
+    }
+    else if (value < parent->value)
+    {
+        find_node(value, parent->left);
+    }
+    else
+    {
+        return;
+    }
 }
