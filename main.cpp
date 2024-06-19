@@ -13,11 +13,16 @@ int main()
         tree.add_node(vec[i]);
     }
 
-//    bt.print_nodes();
+    std::cout << "preorder:" << std::endl;
+    tree.print_nodes_preorder();
+    std::cout << "inorder:" << std::endl;
+    tree.print_nodes_inorder();
+    std::cout << "postorder:" << std::endl;
+    tree.print_nodes_postorder();
 
-    tree.traceroute_node(6);
+    // tree.traceroute_node(6);
 
-    std::cout << (tree.contains(22) ? "true" : "false") << std::endl;
+    // std::cout << (tree.contains(22) ? "true" : "false") << std::endl;
 
     return 0;
 }

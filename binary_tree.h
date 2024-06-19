@@ -20,8 +20,12 @@ class BinaryTree
 public:
     BinaryTree();
 
-    void traceroute_recursive(Node<T> *node);
-    void print_nodes();
+    void traceroute_recursive_preorder(Node<T> *node);
+    void print_nodes_preorder();
+    void traceroute_recursive_inorder(Node<T> *node);
+    void print_nodes_inorder();
+    void traceroute_recursive_postorder(Node<T> *node);
+    void print_nodes_postorder();
 
     void add_node(T value);
     void remove_node(T value);

@@ -13,20 +13,54 @@ BinaryTree<T>::BinaryTree()
 }
 
 template <typename T>
-void BinaryTree<T>::traceroute_recursive(Node<T> *node)
+void BinaryTree<T>::traceroute_recursive_preorder(Node<T> *node)
 {
     if (node != nullptr)
     {
         print(node->value);
-        traceroute_recursive(node->left);
-        traceroute_recursive(node->right);
+        traceroute_recursive_preorder(node->left);
+        traceroute_recursive_preorder(node->right);
     }
 }
 
 template <typename T>
-void BinaryTree<T>::print_nodes()
+void BinaryTree<T>::print_nodes_preorder()
 {
-    traceroute_recursive(root);
+    traceroute_recursive_preorder(root);
+}
+
+template <typename T>
+void BinaryTree<T>::traceroute_recursive_inorder(Node<T> *node)
+{
+    if (node != nullptr)
+    {
+        traceroute_recursive_inorder(node->left);
+        print(node->value);
+        traceroute_recursive_inorder(node->right);
+    }
+}
+
+template <typename T>
+void BinaryTree<T>::print_nodes_inorder()
+{
+    traceroute_recursive_inorder(root);
+}
+
+template <typename T>
+void BinaryTree<T>::traceroute_recursive_postorder(Node<T> *node)
+{
+    if (node != nullptr)
+    {
+        traceroute_recursive_postorder(node->left);
+        traceroute_recursive_postorder(node->right);
+        print(node->value);
+    }
+}
+
+template <typename T>
+void BinaryTree<T>::print_nodes_postorder()
+{
+    traceroute_recursive_postorder(root);
 }
 
 template <typename T>
@@ -126,6 +160,9 @@ bool BinaryTree<T>::contains(T value, Node<T> *parent)
 }
 
 template BinaryTree<int>::BinaryTree();
+template void BinaryTree<int>::print_nodes_preorder();
+template void BinaryTree<int>::print_nodes_inorder();
+template void BinaryTree<int>::print_nodes_postorder();
 template void BinaryTree<int>::add_node(int);
 template void BinaryTree<int>::traceroute_node(int);
 template bool BinaryTree<int>::contains(int);
