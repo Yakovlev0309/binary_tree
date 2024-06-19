@@ -6,12 +6,14 @@ void print(int value)
     std::cout << value << std::endl;
 }
 
-BinaryTree::BinaryTree()
+template <typename T>
+BinaryTree<T>::BinaryTree()
 {
     current = root = nullptr;
 }
 
-void BinaryTree::traceroute_recursive(Node *node)
+template <typename T>
+void BinaryTree<T>::traceroute_recursive(Node<T> *node)
 {
     if (node != nullptr)
     {
@@ -21,16 +23,18 @@ void BinaryTree::traceroute_recursive(Node *node)
     }
 }
 
-void BinaryTree::print_nodes()
+template <typename T>
+void BinaryTree<T>::print_nodes()
 {
     traceroute_recursive(root);
 }
 
-void BinaryTree::add_node(int value)
+template <typename T>
+void BinaryTree<T>::add_node(T value)
 {
     if (root == nullptr)
     {
-        root = new Node(value);
+        root = new Node<int>(value);
     }
     else
     {
@@ -38,13 +42,14 @@ void BinaryTree::add_node(int value)
     }
 }
 
-void BinaryTree::add_node(int value, Node *parent)
+template <typename T>
+void BinaryTree<T>::add_node(T value, Node<T> *parent)
 {
     if (value > parent->value)
     {
         if (parent->right == nullptr)
         {
-            parent->right = new Node(value, parent);
+            parent->right = new Node<T>(value, parent);
         }
         else
         {
@@ -55,7 +60,7 @@ void BinaryTree::add_node(int value, Node *parent)
     {
         if (parent->left == nullptr)
         {
-            parent->left = new Node(value, parent);
+            parent->left = new Node<T>(value, parent);
         }
         else
         {
@@ -64,12 +69,14 @@ void BinaryTree::add_node(int value, Node *parent)
     }
 }
 
-void BinaryTree::traceroute_node(int value)
+template <typename T>
+void BinaryTree<T>::traceroute_node(T value)
 {
     traceroute_node(value, root);
 }
 
-void BinaryTree::traceroute_node(int value, Node *parent)
+template <typename T>
+void BinaryTree<T>::traceroute_node(T value, Node<T> *parent)
 {
     if (parent == nullptr)
     {
@@ -91,12 +98,14 @@ void BinaryTree::traceroute_node(int value, Node *parent)
     }
 }
 
-bool BinaryTree::contains(int value)
+template <typename T>
+bool BinaryTree<T>::contains(T value)
 {
     return contains(value, root);
 }
 
-bool BinaryTree::contains(int value, Node *parent)
+template <typename T>
+bool BinaryTree<T>::contains(T value, Node<T> *parent)
 {
     if (parent == nullptr)
     {
@@ -115,3 +124,8 @@ bool BinaryTree::contains(int value, Node *parent)
         return true;
     }
 }
+
+template BinaryTree<int>::BinaryTree();
+template void BinaryTree<int>::add_node(int);
+template void BinaryTree<int>::traceroute_node(int);
+template bool BinaryTree<int>::contains(int);

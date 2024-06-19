@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     vector<int> vec = {5, 1, 8, 3, 6, 4, 7, 8, 2};
-    BinaryTree tree;
+    BinaryTree<int> tree;
     for (size_t i = 0; i < vec.size(); ++i)
     {
         tree.add_node(vec[i]);
