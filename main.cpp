@@ -1,4 +1,3 @@
-
 #include <iostream>
 #include <vector>
 #include "binary_tree.h"
@@ -16,7 +15,7 @@ int main()
 
 //    bt.print_nodes();
 
-    tree.tracerout_node(6);
+    tree.traceroute_node(6);
 
     std::cout << (tree.contains(22) ? "true" : "false") << std::endl;
 

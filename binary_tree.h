@@ -1,7 +1,3 @@
-
-#ifndef BINARYTREE_H
-#define BINARYTREE_H
-
 #include <cstddef>
 #include <vector>
 
@@ -22,23 +18,21 @@ class BinaryTree
 public:
     BinaryTree();
 
-    void traverse_recursive(Node *node);
+    void traceroute_recursive(Node *node);
     void print_nodes();
 
     void add_node(int value);
     void remove_node(int value);
 
-    void tracerout_node(int value);
+    void traceroute_node(int value);
     bool contains(int value);
 
 private:
     void add_node(int value, Node *parent);
-    void tracerout_node(int value, Node *parent);
+    void traceroute_node(int value, Node *parent);
     bool contains(int value, Node *parent);
 
 private:
     Node *root;
     Node *current;
 };
-
-#endif // BINARYTREE_H

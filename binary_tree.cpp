@@ -1,4 +1,3 @@
-
 #include "binary_tree.h"
 #include <iostream>
 
@@ -12,19 +11,19 @@ BinaryTree::BinaryTree()
     current = root = nullptr;
 }
 
-void BinaryTree::traverse_recursive(Node *node)
+void BinaryTree::traceroute_recursive(Node *node)
 {
     if (node != nullptr)
     {
         print(node->value);
-        traverse_recursive(node->left);
-        traverse_recursive(node->right);
+        traceroute_recursive(node->left);
+        traceroute_recursive(node->right);
     }
 }
 
 void BinaryTree::print_nodes()
 {
-    traverse_recursive(root);
+    traceroute_recursive(root);
 }
 
 void BinaryTree::add_node(int value)
@@ -65,12 +64,12 @@ void BinaryTree::add_node(int value, Node *parent)
     }
 }
 
-void BinaryTree::tracerout_node(int value)
+void BinaryTree::traceroute_node(int value)
 {
-    tracerout_node(value, root);
+    traceroute_node(value, root);
 }
 
-void BinaryTree::tracerout_node(int value, Node *parent)
+void BinaryTree::traceroute_node(int value, Node *parent)
 {
     if (parent == nullptr)
     {
@@ -80,11 +79,11 @@ void BinaryTree::tracerout_node(int value, Node *parent)
     print(parent->value);
     if (value > parent->value)
     {
-        tracerout_node(value, parent->right);
+        traceroute_node(value, parent->right);
     }
     else if (value < parent->value)
     {
-        tracerout_node(value, parent->left);
+        traceroute_node(value, parent->left);
     }
     else
     {
